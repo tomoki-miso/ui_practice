@@ -7,13 +7,25 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
+  cached_network_image: ^3.4.1
   flutter:
     sdk: flutter
+  flutter_gen_runner: ^5.8.0
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  build_runner: ^2.4.14
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
+    flutter_png: true
+  
