@@ -1,7 +1,7 @@
 .PHONY: setup
 setup:
-	flutter clean
-	flutter pub get
+	fvm flutter clean
+	fvm flutter pub get
 
 br:
 	flutter pub run build_runner build --delete-conflicting-outputs
