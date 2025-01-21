@@ -1,3 +1,5 @@
 # ui_practice
+UIのサンプル作成と再現を行ってみるリポジトリ
 
-A new Flutter project.
+### Spotify
+![Spotify](assets/sample/spotify.gif)
