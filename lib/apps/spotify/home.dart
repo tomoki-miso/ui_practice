@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ui_practice/apps/spotify/album.dart';
 import 'package:ui_practice/styles/colors.dart';
+import 'package:ui_practice/styles/size.dart';
 
 class SpotifyHome extends StatelessWidget {
   const SpotifyHome({super.key});
@@ -26,7 +27,7 @@ class SpotifyHome extends StatelessWidget {
                   ),
                   child: const Center(child: Text('T')),
                 ),
-                const Gap(10),
+                const Gap(AppSize.paddingS),
                 Chip(
                   label: const Text(
                     'すべて',
@@ -36,7 +37,7 @@ class SpotifyHome extends StatelessWidget {
                   side: const BorderSide(color: AppColor.spGreen),
                   color: WidgetStateProperty.all(AppColor.spGreen),
                 ),
-                const Gap(10),
+                const Gap(AppSize.paddingS),
                 Chip(
                   label: const Text(
                     '音楽',
@@ -46,7 +47,7 @@ class SpotifyHome extends StatelessWidget {
                   side: const BorderSide(color: AppColor.spGrey),
                   color: WidgetStateProperty.all(AppColor.spGrey),
                 ),
-                const Gap(10),
+                const Gap(AppSize.paddingS),
                 Chip(
                   label: const Text(
                     'ポッドキャスト',
@@ -63,11 +64,11 @@ class SpotifyHome extends StatelessWidget {
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: AppSize.paddingM),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Gap(16),
+                  const Gap(AppSize.paddingM),
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
@@ -84,7 +85,8 @@ class SpotifyHome extends StatelessWidget {
                         width: 56,
                         child: CircleAvatar(
                           backgroundImage: CachedNetworkImageProvider(
-                              'https://thesongbards.com/wp2/wp-content/uploads/2024/03/TheSongbards_BandImage_ForWeb.jpg'),
+                            'https://thesongbards.com/wp2/wp-content/uploads/2024/03/TheSongbards_BandImage_ForWeb.jpg',
+                          ),
                         ),
                       ),
                       Gap(12),
@@ -107,7 +109,7 @@ class SpotifyHome extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Gap(16),
+                  const Gap(AppSize.paddingM),
                   Container(
                     height: 140,
                     decoration: BoxDecoration(
@@ -119,15 +121,16 @@ class SpotifyHome extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(4),
                           child: CachedNetworkImage(
-                              imageUrl:
-                                  'https://cf.mora.jp/contents/package/0000/00000175/0037/377/925/0037377925.200.jpg'),
+                            imageUrl:
+                                'https://cf.mora.jp/contents/package/0000/00000175/0037/377/925/0037377925.200.jpg',
+                          ),
                         ),
                         const Gap(12),
                         const Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Gap(8),
+                              Gap(AppSize.paddingS),
                               Text(
                                 'シングル',
                                 style: TextStyle(
@@ -175,7 +178,7 @@ class SpotifyHome extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Gap(8),
+                              Gap(AppSize.paddingS),
                             ],
                           ),
                         ),
@@ -183,7 +186,7 @@ class SpotifyHome extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Gap(16),
+                  const Gap(AppSize.paddingM),
                   const Text(
                     '本日のおすすめ',
                     style: TextStyle(
@@ -192,7 +195,7 @@ class SpotifyHome extends StatelessWidget {
                       fontSize: 20,
                     ),
                   ),
-                  const Gap(16),
+                  const Gap(AppSize.paddingM),
                   SizedBox(
                     height: 210,
                     child: ListView.builder(
@@ -203,7 +206,7 @@ class SpotifyHome extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Gap(60),
+                  const Gap(AppSize.paddingXL),
                 ],
               ),
             ),
@@ -235,7 +238,7 @@ class RecommendedTiles extends StatelessWidget {
                   child: CachedNetworkImage(imageUrl: album.imageUrl),
                 ),
               ),
-              const Gap(8),
+              const Gap(AppSize.paddingS),
               Text(
                 album.title,
                 style:
@@ -282,7 +285,7 @@ class TopSongsBox extends StatelessWidget {
                 child: CachedNetworkImage(imageUrl: album.imageUrl),
               ),
             ),
-            const Gap(12),
+            const Gap(AppSize.paddingS),
             Expanded(
               child: Text(
                 album.title,
@@ -294,7 +297,7 @@ class TopSongsBox extends StatelessWidget {
                 ),
               ),
             ),
-            const Gap(12),
+            const Gap(AppSize.paddingS),
           ],
         ),
       );
