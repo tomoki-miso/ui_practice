@@ -9,10 +9,21 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsMusicGen {
+  const $AssetsMusicGen();
+
+  /// File path: assets/music/failure.mp3
+  String get failure => 'assets/music/failure.mp3';
+
+  /// List of all assets
+  List<String> get values => [failure];
+}
+
 class Assets {
   Assets._();
 
   static const AssetGenImage life = AssetGenImage('assets/life.jpeg');
+  static const $AssetsMusicGen music = $AssetsMusicGen();
   static const AssetGenImage spotify = AssetGenImage('assets/spotify.png');
 
   /// List of all assets
