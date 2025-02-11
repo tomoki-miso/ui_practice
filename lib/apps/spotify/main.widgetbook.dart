@@ -1,5 +1,3 @@
-// widgetbook.dart
-
 import 'package:flutter/material.dart';
 import 'package:ui_practice/apps/spotify/main.widgetbook.directories.g.dart';
 import 'package:ui_practice/styles/colors.dart';
@@ -40,6 +38,14 @@ class WidgetbookApp extends StatelessWidget {
                   ),
                 ),
               ),
+            ],
+          ),
+          DeviceFrameAddon(
+            devices: [
+              Devices.ios.iPhoneSE,
+              Devices.ios.iPhone13,
+              Devices.ios.iPhone13ProMax,
+              Devices.android.samsungGalaxyNote20,
             ],
           ),
         ],
