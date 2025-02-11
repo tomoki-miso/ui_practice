@@ -2,6 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ui_practice/apps/spotify/album.dart';
+import 'package:ui_practice/apps/spotify/widegts/chip.dart';
+import 'package:ui_practice/apps/spotify/widegts/recomended_tiles.dart';
+import 'package:ui_practice/apps/spotify/widegts/top_song_box.dart';
 import 'package:ui_practice/styles/colors.dart';
 import 'package:ui_practice/styles/size.dart';
 
@@ -28,35 +31,11 @@ class SpotifyHome extends StatelessWidget {
                   child: const Center(child: Text('T')),
                 ),
                 const Gap(AppSize.paddingS),
-                Chip(
-                  label: const Text(
-                    'すべて',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: AppColor.spGreen),
-                  color: WidgetStateProperty.all(AppColor.spGreen),
-                ),
+                const AllChip(),
                 const Gap(AppSize.paddingS),
-                Chip(
-                  label: const Text(
-                    '音楽',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: AppColor.spGrey),
-                  color: WidgetStateProperty.all(AppColor.spGrey),
-                ),
+                const MusicChip(),
                 const Gap(AppSize.paddingS),
-                Chip(
-                  label: const Text(
-                    'ポッドキャスト',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: AppColor.spGrey),
-                  color: WidgetStateProperty.all(AppColor.spGrey),
-                ),
+                const PodcastChip(),
               ],
             ),
           ),
@@ -211,94 +190,6 @@ class SpotifyHome extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      );
-}
-
-class RecommendedTiles extends StatelessWidget {
-  const RecommendedTiles({
-    required this.album,
-    super.key,
-  });
-
-  final Album album;
-
-  @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(right: 16),
-        child: SizedBox(
-          width: 140,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 140,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: CachedNetworkImage(imageUrl: album.imageUrl),
-                ),
-              ),
-              const Gap(AppSize.paddingS),
-              Text(
-                album.title,
-                style:
-                    const TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Text(
-                album.artist,
-                style: const TextStyle(
-                  color: AppColor.spWhiteGrey,
-                  fontSize: 10,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-          ),
-        ),
-      );
-}
-
-class TopSongsBox extends StatelessWidget {
-  const TopSongsBox({
-    required this.album,
-    super.key,
-  });
-
-  final Album album;
-
-  @override
-  Widget build(BuildContext context) => Container(
-        height: 64,
-        width: 175,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: AppColor.spGrey,
-        ),
-        child: Row(
-          children: [
-            SizedBox(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(4),
-                child: CachedNetworkImage(imageUrl: album.imageUrl),
-              ),
-            ),
-            const Gap(AppSize.paddingS),
-            Expanded(
-              child: Text(
-                album.title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const Gap(AppSize.paddingS),
-          ],
         ),
       );
 }
