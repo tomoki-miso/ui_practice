@@ -5,3 +5,6 @@ setup:
 
 br:
 	fvm flutter pub run build_runner build --delete-conflicting-outputs
+
+run widgetbook:
+	fvm flutter run -d chrome --web-renderer html -t  lib/apps/spotify/main.widgetbook.dart
