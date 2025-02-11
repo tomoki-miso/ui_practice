@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:ui_practice/apps/spotify/album.dart';
 import 'package:ui_practice/styles/colors.dart';
 import 'package:ui_practice/styles/size.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class RecommendedTiles extends StatelessWidget {
   const RecommendedTiles({
@@ -49,4 +50,18 @@ class RecommendedTiles extends StatelessWidget {
           ),
         ),
       );
+}
+
+@widgetbook.UseCase(
+  name: 'RecommendedTiles',
+  type: RecommendedTiles,
+)
+RecommendedTiles recomendedTiles(BuildContext context) {
+  final album = Album(
+    artist: '椎名林檎',
+    title: '勝訴ストリップ',
+    imageUrl:
+        'https://content-jp.umgi.net/products/to/TOCT-24321_vUF_extralarge.jpg?12052017115513',
+  );
+  return RecommendedTiles(album: album);
 }

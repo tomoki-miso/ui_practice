@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_practice/styles/colors.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 class AllChip extends StatelessWidget {
   const AllChip({super.key});
@@ -45,3 +46,18 @@ class PodcastChip extends StatelessWidget {
         color: WidgetStateProperty.all(AppColor.spGrey),
       );
 }
+
+@widgetbook.UseCase(
+  name: 'All Chips',
+  type: Column,
+)
+Widget allChips(BuildContext context) => const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AllChip(),
+        SizedBox(height: 8),
+        MusicChip(),
+        SizedBox(height: 8),
+        PodcastChip(),
+      ],
+    );
