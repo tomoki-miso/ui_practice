@@ -2,6 +2,8 @@ import UIKit
 import Flutter
 import GoogleMaps
 
+
+
 @UIApplicationMain
 class AppDelegate: FlutterAppDelegate {
 
@@ -12,7 +14,7 @@ class AppDelegate: FlutterAppDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        GMSServices.provideAPIKey("YOUR_GOOGLE_MAPS_API_KEY")//TODO: ここにAPIキーを入力
+        GMSServices.provideAPIKey("") // TODO: 実際のAPIキーを入力
 
         flutterEngine = FlutterEngine(name: "my_engine")
         flutterEngine.run()
@@ -32,15 +34,30 @@ class AppDelegate: FlutterAppDelegate {
             binaryMessenger: flutterViewController.binaryMessenger
         )
 
-        methodChannel.setMethodCallHandler { [weak self] call, result in
-            if call.method == "showMap" {
-                let mapVC = MapViewController()
-                self?.navigationController?.pushViewController(mapVC, animated: true)
-                result(nil)
-            } else {
-                result(FlutterMethodNotImplemented)
+    methodChannel.setMethodCallHandler { [weak self] call, result in
+    if call.method == "showMap",
+       let args = call.arguments as? [String: Any],
+       let rawStaffList = args["staffList"] as? [[String: Any]] {
+
+        let staffList = rawStaffList.compactMap { dict -> Staff? in
+            guard
+                let name = dict["name"] as? String,
+                let latitude = dict["latitude"] as? Double,
+                let longitude = dict["longitude"] as? Double,
+                let imageUrl = dict["imageUrl"] as? String
+            else {
+                return nil
             }
+            return Staff(name: name, latitude: latitude, longitude: longitude, imageUrl: imageUrl)
         }
+
+        let mapVC = MapViewController(staffList: staffList)
+        self?.navigationController?.pushViewController(mapVC, animated: true)
+        result(nil)
+    } else {
+        result(FlutterMethodNotImplemented)
+    }
+}
 
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

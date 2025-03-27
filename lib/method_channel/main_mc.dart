@@ -30,14 +30,32 @@ class MainApp extends StatelessWidget {
       );
 
   Future<void> launchNativeScreen() async {
-    const MethodChannel methodChannel = MethodChannel('com.example.map');
+    const methodChannel = MethodChannel('com.example.map');
+
+    final staffList = [
+      {
+        'name': '田中',
+        'latitude': 35.6895,
+        'longitude': 139.6917,
+        'imageUrl': '',
+      },
+      {
+        'name': '佐藤',
+        'latitude': 34.6937,
+        'longitude': 135.5023,
+        'imageUrl': '',
+      },
+    ];
+
     try {
-      // メソッド名を'show'に変更（iOS側と一致させる）
-      final result = await methodChannel.invokeMethod('showMap');
+      final result = await methodChannel.invokeMethod('showMap', {
+        'staffList': staffList,
+      });
       debugPrint('Result from native view: $result');
     } on PlatformException catch (e) {
       debugPrint(
-          'Error launching native screen: ${e.code}, ${e.message}, ${e.details}');
+        'Error launching native screen: ${e.code}, ${e.message}, ${e.details}',
+      );
     }
   }
 }
